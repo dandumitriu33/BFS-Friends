@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 
 namespace BFS_c_sharp.Model
 {
     public class UserNode
     {
+        static int nextId = -1;
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,6 +21,7 @@ namespace BFS_c_sharp.Model
 
         public UserNode(string firstName, string lastName)
         {
+            Id = Interlocked.Increment(ref nextId);
             FirstName = firstName;
             LastName = lastName;
         }
