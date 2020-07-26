@@ -11,24 +11,27 @@ namespace BFS_c_sharp.Methods
     {
         public static int DisplayShortestDistance(List<UserNode> users, int sourceId, int destinationId)
         {
+            displayUserDetails(users, sourceId, destinationId);
             int distance = 0;
             bool destinationFound = false;
-            List<int> visited = new List<int>();
-            for (int i = 0; i < users.Count; i++)
-            {
-                visited.Add(0);
-            }
+
+            // instantiante the visited list and fill it with 0's - 0 = not visited, 1 = visited
+            List<int> visited = Enumerable.Repeat(0, users.Count).ToList();
+
+            // set up a queue and next wave of friends for the while loop
             List<int> queue = new List<int>();
             List<int> nextWave = new List<int>();
             visited[sourceId] = 1;
             nextWave.Add(sourceId);
-            Console.WriteLine("Pre while...");
+            
+            // go through each wave / level of friends from source to destination every while loop
             while (destinationFound == false)
             {
                 if (AllVisited(visited))
                 {
                     destinationFound = true;
                     Console.WriteLine("All users visited. destinationFound set to true.");
+                    break;
                 }
                 queue.Clear();
                 distance++;
@@ -66,6 +69,21 @@ namespace BFS_c_sharp.Methods
                 Console.WriteLine($"NextWave len {nextWave.Count}");
             }
             return distance;
+        }
+
+        private static void displayUserDetails(List<UserNode> users, int sourceId, int destinationId)
+        {
+            Console.WriteLine($"Source user's ID: {sourceId} {users[sourceId].FirstName} {users[sourceId].LastName} and has {(users.Find(u => u.Id == sourceId)).Friends.Count} friends");
+            foreach (var item in users[sourceId].Friends)
+            {
+                Console.WriteLine($"Friend ID: {item.Id} {item.FirstName} {item.LastName}");
+            }
+            
+            Console.WriteLine($"Destination user's ID: {destinationId} {users[destinationId].FirstName} {users[destinationId].LastName} and has {(users.Find(u => u.Id == destinationId)).Friends.Count} friends");
+            foreach (var item in users[destinationId].Friends)
+            {
+                Console.WriteLine($"Friend ID: {item.Id} {item.FirstName} {item.LastName}");
+            }
         }
 
         private static bool AllVisited(List<int> visited)
