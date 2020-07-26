@@ -47,9 +47,8 @@ namespace BFS_c_sharp.Methods
 
                 foreach (int currentUserId in queue)
                 {
-                    Console.WriteLine($"Looking at user {currentUserId} in queue");
                     UserNode currentUser = users.FirstOrDefault(u => u.Id == currentUserId);
-                    Console.WriteLine($"User recevied {currentUser.FirstName}");
+                    Console.WriteLine($"Looking at {currentUser.FirstName} and processing.");
                     if (currentUser != null)
                     {
                         foreach (var friend in currentUser.Friends)
@@ -66,7 +65,6 @@ namespace BFS_c_sharp.Methods
                         }
                     }  
                 }
-                Console.WriteLine($"NextWave len {nextWave.Count}");
             }
             return distance;
         }

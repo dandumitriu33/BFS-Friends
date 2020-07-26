@@ -17,12 +17,14 @@ namespace BFS_c_sharp
                 Console.WriteLine($"{user} user ID: {user.Id}");
             }
 
-            
+            //Console.WriteLine($"Min distance between 2 and 23: {MinimumDistance.DisplayShortestDistance(users, 2, 23)}");
 
-            Console.WriteLine($"Min distance between 2 and 7: {MinimumDistance.DisplayShortestDistance(users, 2, 7)}");
+            ListOfFriendsAtDegree.DisplayListOfFriendsAtDegree(users, 1, 3);
 
             Console.WriteLine("Done");
             Console.ReadKey();
         }
+
+        
     }
 }
