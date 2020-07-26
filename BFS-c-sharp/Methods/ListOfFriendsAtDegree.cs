@@ -37,12 +37,17 @@ namespace BFS_c_sharp.Methods
                         if (visited[friend.Id] == 0)
                         {
                             visited[friend.Id] = 1;
-                            queue.Add(friend.Id);
-                            if (startDegree == degree)
+                            queue.Add(friend.Id);      
+                        }
+                        // if this is the last wave, add all the friends of previous wave, without dupicates
+                        if (startDegree == degree)
+                        {
+                            if (result.Find(f => f.Id == friend.Id) == null)
                             {
                                 result.Add(friend);
                             }
-                        }     
+                            
+                        }
                     }
                 }
                 nextWave.Clear();
