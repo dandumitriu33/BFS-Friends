@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Methods\ListOfFriendsAtDegree.cs" />
     <Compile Include="Methods\MinimumDistance.cs" />
+    <Compile Include="Methods\PersonPath.cs" />
     <Compile Include="Model\UserNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
