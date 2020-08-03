@@ -1,2 +1,2 @@
 # BFS-c-sharp
-See instruction in Canvas
+Educational project - trying Beadth First Search in C#, not Dijkstra
